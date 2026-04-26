@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes de Experimentos Agrícolas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 60vw;
+            width: 100%;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p.subtitulo {
+            text-align: center;
+            color: #555;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+        }
+        ul.reportes {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul.reportes li {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-radius: 6px;
+            border-left: 5px solid #4CAF50;
+            transition: background 0.2s;
+        }
+        ul.reportes li:hover {
+            background: #eef9ee;
+        }
+        ul.reportes li a {
+            text-decoration: none;
+            color: #2196F3;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        ul.reportes li a:hover {
+            text-decoration: underline;
+        }
+        .descripcion {
+            color: #666;
+            margin: 5px 0 0 0;
+            font-size: 0.95em;
+        }
+        .estado {
+            font-style: italic;
+            color: #888;
+            font-size: 0.9em;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #aaa;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Centro de Documentación de Experimentos</h1>
+        <p class="subtitulo">Sistema de cultivo hidropónico de lechuga bola (Lactuca sativa var. capitata) y otros cultivos</p>
+        
+        <h2>Reportes disponibles</h2>
+        <ul class="reportes">
+            <li>
+                <a href="reporte_germinacion.html" target="_blank">Reporte de Germinación de Lechuga Bola</a>
+                <p class="descripcion">Evaluación de ocho métodos de germinación usando espuma floral, flotador de polietileno y tierra de jardín, con agua y solución nutritiva.</p>
+                <p class="estado">Estado: Resultados pendientes de medición.</p>
+            </li>
+            <!-- Futuros reportes se añadirán aquí -->
+        </ul>
+        
+        <h2>Próximamente</h2>
+        <ul class="reportes">
+            <li style="border-left-color: #ccc;">
+                <span style="color: #999; font-weight: 700;">Sistema NFT de lechuga (en preparación)</span>
+                <p class="descripcion">Montaje y seguimiento del cultivo hidropónico en sistema NFT.</p>
+                <p class="estado">Estado: No iniciado.</p>
+            </li>
+            <li style="border-left-color: #ccc;">
+                <span style="color: #999; font-weight: 700;">Comparativa de soluciones nutritivas (en planificación)</span>
+                <p class="descripcion">Análisis de crecimiento con distintas concentraciones de fertilizante.</p>
+                <p class="estado">Estado: No iniciado.</p>
+            </li>
+        </ul>
+        
+        <footer>
+            Repositorio privado de experimentos &mdash; Estilo basado en el reporte original &mdash; Fuente Roboto
+        </footer>
+    </div>
+</body>
+</html>
