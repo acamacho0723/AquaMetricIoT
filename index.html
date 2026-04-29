@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>Dashboard - Hidroponía NFT</title>
+  <title>Reporte NFT - Hidroponía</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,72 +37,6 @@
       flex-direction: column;
       gap: 2rem;
     }
-    /* Header */
-    .header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .greeting h1 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #0b2b26;
-      letter-spacing: -0.3px;
-    }
-    .greeting .date {
-      color: #5e6f7e;
-      font-size: 0.95rem;
-      margin-top: 0.25rem;
-      font-weight: 500;
-    }
-    .user-badge {
-      background: #eaf7f0;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      padding: 0.5rem 1.4rem;
-      border-radius: 3rem;
-      color: #11554b;
-      font-weight: 500;
-    }
-    .user-badge i {
-      font-size: 1.3rem;
-    }
-    /* KPI cards */
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1.2rem;
-    }
-    .kpi-card {
-      background: #ffffff;
-      border: 1px solid #eef2f6;
-      border-radius: 1.8rem;
-      padding: 1.3rem 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-      transition: all 0.2s;
-    }
-    .kpi-icon {
-      font-size: 2rem;
-      color: #2d6a4f;
-      background: #e9f4ee;
-      border-radius: 1.2rem;
-      padding: 0.7rem;
-    }
-    .kpi-info .kpi-value {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #1a3b34;
-    }
-    .kpi-info .kpi-label {
-      font-size: 0.8rem;
-      color: #5e6f7e;
-      font-weight: 500;
-    }
     /* Sección reportes */
     .section-title {
       font-size: 1.3rem;
@@ -118,7 +52,10 @@
       flex-wrap: wrap;
       gap: 1.5rem;
     }
-    .report-card {
+    a.report-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
       background: #fafcfc;
       border: 1px solid #e1e8ee;
       border-radius: 2rem;
@@ -130,7 +67,7 @@
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
       transition: all 0.25s ease;
     }
-    .report-card:hover {
+    a.report-card:hover {
       border-color: #b7cfc0;
       box-shadow: 0 12px 22px rgba(45, 106, 79, 0.08);
     }
@@ -200,51 +137,15 @@
 </head>
 <body>
   <div class="dashboard">
-    <!-- Cabecera -->
-    <div class="header">
-      <div class="greeting">
-        <h1>🌱 Hidroponía NFT</h1>
-        <div class="date" id="currentDate"></div>
-      </div>
-      <div class="user-badge">
-        <i class="fas fa-user-circle"></i> <span>Admin Cultivo</span>
-      </div>
-    </div>
-
-    <!-- KPIs rápidos -->
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <div class="kpi-icon"><i class="fas fa-seedling"></i></div>
-        <div class="kpi-info">
-          <div class="kpi-value">1</div>
-          <div class="kpi-label">Sistema activo</div>
-        </div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon"><i class="fas fa-tint"></i></div>
-        <div class="kpi-info">
-          <div class="kpi-value">5.8</div>
-          <div class="kpi-label">pH solución</div>
-        </div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-icon"><i class="fas fa-thermometer-half"></i></div>
-        <div class="kpi-info">
-          <div class="kpi-value">22°C</div>
-          <div class="kpi-label">Temp. agua</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SECCIÓN DE REPORTES (único reporte: Sistema NFT) -->
+    <!-- SECCIÓN DE REPORTE (único reporte: Sistema NFT) -->
     <div>
       <div class="section-title">
         <i class="fas fa-clipboard-list"></i> Reporte de cultivo
       </div>
       <hr>
       <div class="reports-grid">
-        <!-- Única tarjeta: Sistema NFT -->
-        <div class="report-card">
+        <!-- Tarjeta única con enlace al reporte -->
+        <a href="/reportenft26042026/AquaMetricIoT_v2.html" class="report-card">
           <div class="report-header">
             <i class="fas fa-water"></i>
             <h3>Sistema NFT (en preparación)</h3>
@@ -260,22 +161,9 @@
             <span><i class="far fa-clock"></i> Actualizado hoy</span>
             <span><i class="fas fa-chevron-right"></i></span>
           </div>
-        </div>
-        <!-- Fin única tarjeta -->
+        </a>
       </div>
     </div>
   </div>
-
-  <!-- Fecha dinámica -->
-  <script>
-    (function() {
-      const dateEl = document.getElementById('currentDate');
-      if (dateEl) {
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const today = new Date().toLocaleDateString('es-MX', options);
-        dateEl.textContent = today.charAt(0).toUpperCase() + today.slice(1);
-      }
-    })();
-  </script>
 </body>
 </html>
