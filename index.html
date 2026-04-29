@@ -1,110 +1,281 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reportes de Experimentos Agrícolas</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 60vw;
-            width: 100%;
-            background: white;
-            padding: 30px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-        h1 {
-            color: #4CAF50;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        p.subtitulo {
-            text-align: center;
-            color: #555;
-            margin-top: 0;
-            margin-bottom: 30px;
-        }
-        h2 {
-            color: #333;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 5px;
-        }
-        ul.reportes {
-            list-style-type: none;
-            padding: 0;
-        }
-        ul.reportes li {
-            background: #f9f9f9;
-            margin: 10px 0;
-            padding: 15px 20px;
-            border-radius: 6px;
-            border-left: 5px solid #4CAF50;
-            transition: background 0.2s;
-        }
-        ul.reportes li:hover {
-            background: #eef9ee;
-        }
-        ul.reportes li a {
-            text-decoration: none;
-            color: #2196F3;
-            font-weight: 700;
-            font-size: 1.1em;
-        }
-        ul.reportes li a:hover {
-            text-decoration: underline;
-        }
-        .descripcion {
-            color: #666;
-            margin: 5px 0 0 0;
-            font-size: 0.95em;
-        }
-        .estado {
-            font-style: italic;
-            color: #888;
-            font-size: 0.9em;
-        }
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #aaa;
-            font-size: 0.85em;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Dashboard - Hidroponía NFT</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f4f7fc;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+    .dashboard {
+      max-width: 1100px;
+      width: 100%;
+      background: white;
+      border-radius: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), 0 8px 20px rgba(0, 20, 30, 0.08);
+      padding: 2rem 2rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    /* Header */
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .greeting h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #0b2b26;
+      letter-spacing: -0.3px;
+    }
+    .greeting .date {
+      color: #5e6f7e;
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+    .user-badge {
+      background: #eaf7f0;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.5rem 1.4rem;
+      border-radius: 3rem;
+      color: #11554b;
+      font-weight: 500;
+    }
+    .user-badge i {
+      font-size: 1.3rem;
+    }
+    /* KPI cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.2rem;
+    }
+    .kpi-card {
+      background: #ffffff;
+      border: 1px solid #eef2f6;
+      border-radius: 1.8rem;
+      padding: 1.3rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: all 0.2s;
+    }
+    .kpi-icon {
+      font-size: 2rem;
+      color: #2d6a4f;
+      background: #e9f4ee;
+      border-radius: 1.2rem;
+      padding: 0.7rem;
+    }
+    .kpi-info .kpi-value {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #1a3b34;
+    }
+    .kpi-info .kpi-label {
+      font-size: 0.8rem;
+      color: #5e6f7e;
+      font-weight: 500;
+    }
+    /* Sección reportes */
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1e2f2c;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.2rem;
+    }
+    .reports-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .report-card {
+      background: #fafcfc;
+      border: 1px solid #e1e8ee;
+      border-radius: 2rem;
+      padding: 1.5rem 1.6rem;
+      flex: 1 1 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s ease;
+    }
+    .report-card:hover {
+      border-color: #b7cfc0;
+      box-shadow: 0 12px 22px rgba(45, 106, 79, 0.08);
+    }
+    .report-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .report-header i {
+      font-size: 1.5rem;
+      color: #2d6a4f;
+    }
+    .report-header h3 {
+      font-weight: 650;
+      font-size: 1.2rem;
+      color: #19332b;
+      letter-spacing: -0.2px;
+    }
+    .report-desc {
+      color: #3f5550;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 0.4rem;
+    }
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f0f4f9;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      width: fit-content;
+      color: #1a3b34;
+    }
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #6c757d;
+    }
+    .status-dot.pending {
+      background: #f4b400;
+    }
+    .footer-note {
+      margin-top: 0.8rem;
+      color: #8a9aa8;
+      font-size: 0.8rem;
+      border-top: 1px solid #e6ecf1;
+      padding-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    hr {
+      border: 0.5px solid #e1e8ee;
+      margin: 0.2rem 0 0.8rem;
+    }
+    @media (max-width: 500px) {
+      .dashboard {
+        padding: 1.4rem;
+        gap: 1.4rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Centro de Documentación de Experimentos</h1>
-        <p class="subtitulo">Sistema de cultivo hidropónico de lechuga bola (Lactuca sativa var. capitata) y otros cultivos</p>
-        
-        <h2>Reportes disponibles</h2>
-        <ul class="reportes">
-            <li>
-                <a href="reportegerminacion25042026/main.html" target="_blank">Reporte de Germinación de Lechuga Bola</a>
-                <p class="descripcion">Evaluación de ocho métodos de germinación usando espuma floral, flotador de polietileno y tierra de jardín, con agua y solución nutritiva.</p>
-                <p class="estado">Estado: Resultados pendientes de medición.</p>
-            </li>
-        </ul>
-        
-        <h2>Próximamente</h2>
-        <ul class="reportes">
-            <li style="border-left-color: #ccc;">
-                <span style="color: #999; font-weight: 700;">Sistema NFT (en preparación)</span>
-                <p class="descripcion">Montaje y seguimiento del cultivo hidropónico en sistema NFT.</p>
-                <p class="estado">Estado: No iniciado.</p>
-            </li>
-        </ul>
-        
-        <footer></footer>
+  <div class="dashboard">
+    <!-- Cabecera -->
+    <div class="header">
+      <div class="greeting">
+        <h1>🌱 Hidroponía NFT</h1>
+        <div class="date" id="currentDate"></div>
+      </div>
+      <div class="user-badge">
+        <i class="fas fa-user-circle"></i> <span>Admin Cultivo</span>
+      </div>
     </div>
+
+    <!-- KPIs rápidos -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon"><i class="fas fa-seedling"></i></div>
+        <div class="kpi-info">
+          <div class="kpi-value">1</div>
+          <div class="kpi-label">Sistema activo</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon"><i class="fas fa-tint"></i></div>
+        <div class="kpi-info">
+          <div class="kpi-value">5.8</div>
+          <div class="kpi-label">pH solución</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon"><i class="fas fa-thermometer-half"></i></div>
+        <div class="kpi-info">
+          <div class="kpi-value">22°C</div>
+          <div class="kpi-label">Temp. agua</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN DE REPORTES (único reporte: Sistema NFT) -->
+    <div>
+      <div class="section-title">
+        <i class="fas fa-clipboard-list"></i> Reporte de cultivo
+      </div>
+      <hr>
+      <div class="reports-grid">
+        <!-- Única tarjeta: Sistema NFT -->
+        <div class="report-card">
+          <div class="report-header">
+            <i class="fas fa-water"></i>
+            <h3>Sistema NFT (en preparación)</h3>
+          </div>
+          <p class="report-desc">
+            Montaje y seguimiento del cultivo hidropónico en sistema NFT.
+          </p>
+          <div class="status-badge">
+            <span class="status-dot pending"></span>
+            Estado: Pendiente de revisión.
+          </div>
+          <div class="footer-note">
+            <span><i class="far fa-clock"></i> Actualizado hoy</span>
+            <span><i class="fas fa-chevron-right"></i></span>
+          </div>
+        </div>
+        <!-- Fin única tarjeta -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Fecha dinámica -->
+  <script>
+    (function() {
+      const dateEl = document.getElementById('currentDate');
+      if (dateEl) {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const today = new Date().toLocaleDateString('es-MX', options);
+        dateEl.textContent = today.charAt(0).toUpperCase() + today.slice(1);
+      }
+    })();
+  </script>
 </body>
 </html>
